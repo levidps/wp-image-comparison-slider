@@ -4,7 +4,8 @@ var gulp                = require('gulp'),
 	args                = require('yargs').argv,
 	autoprefixer        = require('gulp-autoprefixer'),
 	composer 		    = require('gulp-uglify/composer'),
-	jshint 			    = require('gulp-jshint'),
+	eslint				= require('gulp-eslint'),
+	babel 				= require('gulp-babel'),
 	minifycss           = require('gulp-minify-css'),
 	notify			    = require('gulp-notify'),
 	plumber			    = require('gulp-plumber'),
@@ -47,8 +48,24 @@ gulp.task('js', function (done) {
         gulp.src(config.sourceFiles.js),
         plumber(plumberErrorHandler),
         gulpIf(isProd, removeLogging({ namespace: ['console', 'window.console'] })),
-        jshint({esversion: 5}),
-        jshint.reporter('default', { verbose: true }),
+        eslint({
+        	"parserOptions": {
+		        "ecmaVersion": 2015
+		    },
+		    rules: {
+	            'strict': 2
+	        },
+	        globals: [
+	            'jQuery',
+	            '$'
+	        ],
+	        envs: [
+	            'browser'
+	        ]
+	    }),
+	    babel({
+            presets: ['@babel/env']
+        }),
         gulpIf(isProd, minify()),
         rename({ suffix:'.min' }),
         gulp.dest(config.destination)

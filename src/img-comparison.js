@@ -1,5 +1,6 @@
 function initComparisons() {
-	var x, i;
+	let x;
+	let i;
 
 	/* Find all elements with an "overlay" class: */
 	x = document.getElementsByClassName("img-comp-container");
@@ -7,15 +8,16 @@ function initComparisons() {
 		/* Once for each "overlay" element:
 		pass the "overlay" element as a parameter when executing the compareImages function: */
 		loadImages(x[i]);
-	}
+	};
 
-	function loadImages(container) {
-		var x, y;
-		var images = container.querySelectorAll('img');
+	const loadImages = (container) => {
+		let x;
+		let y;
+		let images = container.querySelectorAll('img');
 		container.classList.add('state_loading');
 
 		for (i = 0; i < images.length; i++) {
-			var current = images[i];
+			let current = images[i];
 
 			if ( i === images.length -1 ) {
 				current.onload = function() {
@@ -36,9 +38,12 @@ function initComparisons() {
 		}
 	}
 
-	function compareImages(container) {
-		var slider, clicked = 0, w, h;
-		var img = container.querySelector('.img-comp-overlay');
+	const compareImages = (container) => {
+		let slider; 
+		let clicked = 0;
+		let w;
+		let h;
+		let img = container.querySelector('.img-comp-overlay');
 
 		container.style.height = img.offsetHeight + 'px';
 
@@ -61,7 +66,7 @@ function initComparisons() {
 		slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
 
 		container.classList.add('state_active');
-		setTimeout(function() {
+		setTimeout(() => {
 			container.classList.remove('state_loading');
 		}, 1000);
 
@@ -80,7 +85,7 @@ function initComparisons() {
 		/* And Cancel Touch (to celear the touch screen issue) */
 		window.addEventListener("touchcancel", slideFinish, false);
 
-		function slideReady(e) {
+		const slideReady = (e) => {
 			/* Prevent any other actions that may occur when moving over the image: */
 			e.preventDefault();
 			/* The slider is now clicked and ready to move: */
@@ -90,13 +95,13 @@ function initComparisons() {
 			window.addEventListener("touchmove", slideMove);
 		}
 
-		function slideFinish() {
+		const slideFinish = () => {
 			/* The slider is no longer clicked: */
 			clicked = 0;
 		}
 
-		function slideMove(e) {
-			var pos;
+		const slideMove = (e) => {
+			let pos;
 			/* If the slider is no longer clicked, exit this function: */
 			if (clicked === 0) return false;
 			/* Get the cursor's x position: */
@@ -108,8 +113,9 @@ function initComparisons() {
 			slide(pos);
 		}
 
-		function getCursorPos(e) {
-			var a, x = 0;
+		const getCursorPos = (e) => {
+			let a;
+			let x = 0;
 			e = e || window.event;
 			/* Get the x positions of the image: */
 			a = img.getBoundingClientRect();
@@ -120,7 +126,7 @@ function initComparisons() {
 			return x;
 		}
 
-		function slide(x) {
+		const slide = (x) => {
 			/* Resize the image: */
 			img.style.width = x + "px";
 			/* Position the slider: */
