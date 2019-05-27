@@ -10,7 +10,7 @@ function initComparisons() {
 		loadImages(x[i]);
 	};
 
-	const loadImages = (container) => {
+	function loadImages(container) {
 		let x;
 		let y;
 		let images = container.querySelectorAll('img');
@@ -38,7 +38,7 @@ function initComparisons() {
 		}
 	}
 
-	const compareImages = (container) => {
+	function compareImages(container) {
 		let slider; 
 		let clicked = 0;
 		let w;
@@ -85,7 +85,7 @@ function initComparisons() {
 		/* And Cancel Touch (to celear the touch screen issue) */
 		window.addEventListener("touchcancel", slideFinish, false);
 
-		const slideReady = (e) => {
+		function slideReady(e) {
 			/* Prevent any other actions that may occur when moving over the image: */
 			e.preventDefault();
 			/* The slider is now clicked and ready to move: */
@@ -95,12 +95,12 @@ function initComparisons() {
 			window.addEventListener("touchmove", slideMove);
 		}
 
-		const slideFinish = () => {
+		function slideFinish() {
 			/* The slider is no longer clicked: */
 			clicked = 0;
 		}
 
-		const slideMove = (e) => {
+		function slideMove(e) {
 			let pos;
 			/* If the slider is no longer clicked, exit this function: */
 			if (clicked === 0) return false;
@@ -113,7 +113,7 @@ function initComparisons() {
 			slide(pos);
 		}
 
-		const getCursorPos = (e) => {
+		function getCursorPos(e) {
 			let a;
 			let x = 0;
 			e = e || window.event;
@@ -126,7 +126,7 @@ function initComparisons() {
 			return x;
 		}
 
-		const slide = (x) => {
+		function slide(x) {
 			/* Resize the image: */
 			img.style.width = x + "px";
 			/* Position the slider: */

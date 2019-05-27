@@ -50,7 +50,7 @@ gulp.task('js', function (done) {
         gulpIf(isProd, removeLogging({ namespace: ['console', 'window.console'] })),
         eslint({
         	"parserOptions": {
-		        "ecmaVersion": 2015
+		        "ecmaVersion": 6
 		    },
 		    rules: {
 	            'strict': 2

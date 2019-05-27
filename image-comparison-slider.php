@@ -81,7 +81,7 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 
 
 	function image_comparison_dependencies() {
-		wp_register_script( 'img-comp', WPMU_PLUGIN_URL . '/image-comparison-slider/dist/img-comparison.js', array(), '1.0', true );
+		wp_register_script( 'img-comp', WPMU_PLUGIN_URL . '/image-comparison-slider/dist/img-comparison.min.js', array(), '1.0', true );
 		wp_enqueue_script( 'img-comp' );
 		wp_register_style( 'img-comp', WPMU_PLUGIN_URL . '/image-comparison-slider/dist/img-comparison.css', false, '1.0' );
 		wp_enqueue_style( 'img-comp' );

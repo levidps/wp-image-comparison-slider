@@ -17,6 +17,7 @@ A basic plugin to add an easy shortcode for creating image comparison sliders to
 **ES6 & Optimization**
 * JS minified and uglified
 * ES Lint
+* Babel Compiler
 
 ### Folder structure
 ```
