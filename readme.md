@@ -25,20 +25,19 @@ A basic plugin to add an easy shortcode for creating image comparison sliders to
 ├── 404.html
 ├── about.md
 ├── blog.md
-├── src <--- contains js/scss
-│   ├── img-comparison.js <--- A fix for optimization, do not delete this folder
-│   ├── img-comparison.scss <--- Post css config
-├── gulp.config.js <--- file for configuring input/output locations for gulp
-├── gulpfile.js <--- gulp file for compiling js/css for prod/dev
-├── pacakge.json <-- contains scripts for building prod(minfied) and dev(source maps)
-├── image-comparison-slider.php <-- plugin file for WP
+├── src 
+│   ├── img-comparison.js
+│   ├── img-comparison.scss
+├── gulp.config.js 
+├── gulpfile.js 
+├── pacakge.json
+├── image-comparison-slider.php
 └── package-lock.json
 ```
 You can see above the basic structure of the basic breakdown of files
 
-### Assets
-* TODO
-
 ## Build
-* TODO
+* Both functions clean the `dist` directory removing old files/sourcemaps
+* `npm run build:dev` - builds un-minfied js/css with sourcemaps
+* `npm run build:prod` - builds minified js/css no sourcemaps
 
