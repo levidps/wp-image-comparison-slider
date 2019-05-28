@@ -69,7 +69,6 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 					  </div>
 					</div>';
 			endif;
-			$output .= '<p>Image Comparison Slider by LDPS</p>';
 
 			return $output;
 
