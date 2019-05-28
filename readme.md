@@ -22,16 +22,13 @@ A basic plugin to add an easy shortcode for creating image comparison sliders to
 ### Folder structure
 ```
 .
-├── 404.html
-├── about.md
-├── blog.md
+├── image-comparison-slider.php
 ├── src 
 │   ├── img-comparison.js
 │   ├── img-comparison.scss
 ├── gulp.config.js 
 ├── gulpfile.js 
 ├── pacakge.json
-├── image-comparison-slider.php
 └── package-lock.json
 ```
 You can see above the basic structure of the basic breakdown of files
