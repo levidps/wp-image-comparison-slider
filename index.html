@@ -2,21 +2,140 @@
 <html>
 <head>
 	<title>WordPress Image Comparison Slider</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./dist/img-comparison.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
     <style type="text/css">
+        @font-face {
+            font-family: 'FontZilla';
+            src: url('./assets/fonts/Yq3oufKwKemIyZsL.woff2');
+            font-weight: 200;
+        }
+
+        @font-face {
+            font-family: 'FontZilla';
+            src: url('./assets/fonts/Yq3oufKwKemIyZsR.woff2');
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: 'FontZilla';
+            src: url('./assets/fonts/Yq3oufKwKemIyZsB.woff2');
+            font-weight: 700;
+        }
+
     	body, html {
-    		font-family: 'AktGro';
+    		font-family: 'FontZilla';
     	}
-    	h1 {
-    		font-size: 1.625rem;
-    		font-weight: bold;
-    	}
+        h1 {
+            font-weight: 200 !important;
+        }
+        pre, code {
+            font-size: 1rem;
+            white-space: pre-wrap !important;       /* Since CSS 2.1 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap !important;      /* Opera 4-6 */
+            white-space: -o-pre-wrap !important;    /* Opera 7 */
+            word-wrap: break-word !important;       /* Internet Explorer 5.5+ */
+        }
+        .shadow {
+            box-shadow: 0 8px 8px rgba(10,10,10,.1);
+        }
+        .footer {
+            font-size: 13px;
+            padding: 1rem;
+        }
     </style>
 </head>
 <body>
+<nav class="navbar is-fixed-top shadow" role="navigation" aria-label="dropdown navigation">
+    <div class="container">
+      <span class="navbar-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="21.8"><path fill="#333" d="M9 5.9v2.5l-5.8 2.5L9 13.3v2.6L0 12V9.8l9-3.9zM15.3 0v21.8h-2.6V0h2.6zM24.8 10.9L19 8.5V5.9l9 3.9V12l-9 3.9v-2.5l5.8-2.5z"/><g><path d="M9 5.9v2.5l-5.8 2.5L9 13.3v2.6L0 12V9.8l9-3.9zM15.3 0v21.8h-2.6V0h2.6zM24.8 10.9L19 8.5V5.9l9 3.9V12l-9 3.9v-2.5l5.8-2.5z"/></g></svg>
+      </span>
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/levidps/wp-image-comparison-slider" rel="noopener nofollow">
+            <span class="icon" style="color: #888;">
+              <svg class="svg-inline--fa fa-github-alt fa-w-15 fa-lg" aria-hidden="true" data-prefix="fab" data-icon="github-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512" data-fa-i2svg=""><path fill="currentColor" d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg><!-- <i class="fab fa-lg fa-github-alt"></i> -->
+            </span>
+        </a>
+        <span class="navbar-item">
+          <img src="https://img.shields.io/badge/version-1.0.0-blue.svg?style=flat" alt="version 1.0.0">
+        </span>
+      </div>
+  </div>
+</nav>
 
-	<h1 class="center-align">Image Comparison Slider<br/>for WordPress</h1>
 
+<section class="hero is-fullheight is-fullheight-with-navbar has-background-white-ter">
+    <div class="hero-body is-fullheight">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column is-4 is-narrow">
+                    <h1 class="title is-1">
+                        <span itemprop="name">WP Image Comparison Slider</span>
+                    </h1>
+                    <h5 class="subtitle is-6">
+                        <span itemprop="description">WordPress plugin to easily add shortcodes to your pages to create side-by-side image comparisons.</span>
+                    </h5>
+                    <div class="columns is-centered is-vcentered">
+                        <div class="column">
+                            <div class="checkout-wrapper">
+                                <div class="checkout">
+                                    <a  href="https://github.com/levidps/wp-image-comparison-slider" rel="noopener nofollow" 
+                                    class="button is-light is-medium is-rounded paddle_download">View on Github</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-vcentered">
+                        <div class="column is-narrow">
+                            <div class="is-size-7 has-text-grey">
+                                Compatible with latest WordPress
+                            </div>
+                            <div class="is-size-7">– &nbsp;</div>
+                            <div class="is-size-7 has-text-grey">
+                                Category:<!-- --> 
+                                <span itemprop="applicationCategory">WordPress Plugins</span>
+                            </div>
+                            <div class="is-size-7 has-text-grey">
+                                Latest version:<!-- --> 
+                                <span itemprop="softwareVersion">1.0.0</span> <!-- -->
+                            </div>
+                            <div class="is-size-7 has-text-grey">
+                                <span itemprop="author creator copyrightHolder" itemscope="" itemtype="http://schema.org/Person">
+                                    <span itemprop="name">@Levidps</span>
+                                </span>
+                            </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="column is-8 is-narrow">
+                    <div class="shadow img-comp-container" data-comparison-start="50%">
+                        <div class="img-comp-img">
+                            <img class="img-comp-pre" data-src="https://cinnafilm.com/wp-content/uploads/2019/03/2019.03.26-NAB-Post_blog-bg-1280x720.jpg" alt="Image One Alt">
+                        </div>
+                        <div class="img-comp-img img-comp-overlay">
+                            <img class="img-comp-post" data-src="https://cinnafilm.com/wp-content/uploads/2019/03/2019.03.26-NAB-Post_blog-bg-1280x720.jpg" alt="Image Twpo Alt Two">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer has-text-grey">
+  <div class="content has-text-centered">
+    <p>
+      All Rights Reserved @<a class="has-text-grey-darker" href="https://levidps.com">Levidps</a>. The source code is licensed
+      <a class="has-text-grey-darker" href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+    </p>
+  </div>
+</footer>
+
+<script type="text/javascript" src="./dist/img-comparison.min.js"></script>
 </body>
 </html>
