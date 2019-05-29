@@ -43,6 +43,16 @@
 			opacity: 1;
 			transition: top .5s cubic-bezier(0.63, 0.24, 0.32, 1.24), height .5s cubic-bezier(0.63, 0.24, 0.32, 1.24);
 		}
+
+		.img-comp-slider {
+			opacity: 1;
+			transform: scale(1);
+
+			&:before {
+				opacity: 1;
+				transform: scale(1);			
+			}
+		}
 	}
 }
 
@@ -100,16 +110,6 @@
 	    transform: scale(0);
 	    opacity: 0;
 	    transition: transform .4s cubic-bezier(0.63, 0.24, 0.32, 1.24), opacity .4s ease;
-	}
-
-	&:hover {
-		opacity: 1;
-		transform: scale(1);
-
-		&:before {
-			opacity: 1;
-			transform: scale(1);			
-		}
 	}
 }
 
