@@ -62,10 +62,10 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 				$output =
 					'<div class="img-comp-container" data-comparison-start="'. $start .'" data-comparison-height="'. $height .'" data-comparison-width="'. $width .'">
 					  <div class="img-comp-img">
-					    <img class="img-comp-pre" data-src="'. $img1 .'" alt="'. $alt1 .'">
+					    <img class="img-comp-post" data-src="'. $img2 .'" alt="'. $alt1 .'">
 					  </div>
 					  <div class="img-comp-img img-comp-overlay">
-					    <img class="img-comp-post" data-src="'. $img2 .'" alt="'. $alt2 .'">
+					    <img class="img-comp-pre" data-src="'. $img1 .'" alt="'. $alt2 .'">
 					  </div>
 					</div>';
 			endif;
