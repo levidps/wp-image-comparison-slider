@@ -35,6 +35,15 @@
 		opacity: 0;
 		transition: opacity .5s ease 1s;
 	}
+
+	&:hover {
+		.img-comp-img.img-comp-overlay.draw--divider:after {
+			height: 100%;
+			top: 0%;
+			opacity: 1;
+			transition: top .5s cubic-bezier(0.63, 0.24, 0.32, 1.24), height .5s cubic-bezier(0.63, 0.24, 0.32, 1.24);
+		}
+	}
 }
 
 .img-comp-img {
@@ -46,6 +55,20 @@
 	img {
 		display: block;
 		vertical-align: middle;
+	}
+
+	&.img-comp-overlay.draw--divider {
+		&:after {
+			content: '';
+			position: absolute;
+			height: 0;
+			width: 1px;
+			background-color: rgba(white, .5);
+			right: 0;
+			top: 50%;
+			opacity: 0;
+			transition: top .5s cubic-bezier(0.63, 0.24, 0.32, 1.24), height .5s cubic-bezier(0.63, 0.24, 0.32, 1.24), opacity .3s ease .4s;
+		}
 	}
 }
 

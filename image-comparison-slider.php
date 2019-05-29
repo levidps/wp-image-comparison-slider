@@ -5,7 +5,7 @@
  * Plugin Name: Image Comparison Slider
  * Plugin URI:  https://levidps.com/resources/image-comparison-slider
  * Description: Plugin for creating image comparison sliders easily from short codes.
- * Version:     1.0
+ * Version:     1.0.1
  * Author:      Levidps
  * Author URI:  https://github.com/levidps
  * License:     GPLv2 or later
@@ -80,9 +80,9 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 
 
 	function image_comparison_dependencies() {
-		wp_register_script( 'img-comp', WPMU_PLUGIN_URL . '/image-comparison-slider/dist/img-comparison.min.js', array(), '1.0', true );
+		wp_register_script( 'img-comp', WPMU_PLUGIN_URL . '/image-comparison-slider/dist/img-comparison.min.js', array(), '1.0.2', true );
 		wp_enqueue_script( 'img-comp' );
-		wp_register_style( 'img-comp', WPMU_PLUGIN_URL . '/image-comparison-slider/dist/img-comparison.css', false, '1.0' );
+		wp_register_style( 'img-comp', WPMU_PLUGIN_URL . '/image-comparison-slider/dist/img-comparison.css?v1.0.1', false, '1.0.1' );
 		wp_enqueue_style( 'img-comp' );
 	}
 	add_action('wp_enqueue_scripts', 'image_comparison_dependencies');

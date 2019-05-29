@@ -1,14 +1,13 @@
 function initComparisons() {
-	let x;
-	let i;
+	let containers;
 
 	/* Find all elements with an "overlay" class: */
-	x = document.getElementsByClassName("img-comp-container");
-	for (i = 0; i < x.length; i++) {
+	containers = document.getElementsByClassName("img-comp-container");
+	for (let container of containers) {
 		/* Once for each "overlay" element:
 		pass the "overlay" element as a parameter when executing the compareImages function: */
-		loadImages(x[i]);
-	};
+		loadImages(container);
+	}
 
 	function loadImages(container) {
 		let x;
@@ -16,7 +15,7 @@ function initComparisons() {
 		let images = container.querySelectorAll('img');
 		container.classList.add('state_loading');
 
-		for (i = 0; i < images.length; i++) {
+		for (let i = 0; i < images.length; i++) {
 			let current = images[i];
 
 			if ( i === images.length -1 ) {
