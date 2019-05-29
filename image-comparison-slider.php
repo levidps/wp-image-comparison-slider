@@ -40,6 +40,7 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 					'image-one-alt' => '',
 					'image-two'     => '',
 					'image-two-alt' => '',
+					'caption'		=> null,
 					'max-width'     => '1280',
 					'max-height'    => '720',
 					'start'         => '50%'
@@ -52,6 +53,8 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 
 			$img2   = esc_attr($args['image-two']);
 			$alt2   = esc_attr($args['image-two-alt']);
+
+			$caption= esc_attr($args['caption']);
 
 			$start  = esc_attr($args['start']);
 			$width  = esc_attr($args['max-width']);
@@ -68,6 +71,12 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 					    <img class="img-comp-pre" data-src="'. $img1 .'" alt="'. $alt2 .'">
 					  </div>
 					</div>';
+
+					if ( isset($caption) ): 
+						$output .= '<figcaption>'. $caption .'</figcaption>';
+					endif;
+
+					$output = '<figure>'. $output .'</figure>';
 			endif;
 
 			return $output;
