@@ -19,11 +19,12 @@ function initComparisons() {
 			let current = images[i];
 
 			if ( i === images.length -1 ) {
-				current.onload = function() {
+				current.onload = function(img) {
 					compareImages(container);
+					initLabels(container);
 					setTimeout(() => {
-						this.style.height = y + 'px';
-						this.style.maxWidth = x + 'px';
+						img.style.height = y + 'px';
+						img.style.maxWidth = x + 'px';
 					}, 100);
 				};
 			} else {
@@ -34,6 +35,22 @@ function initComparisons() {
 			}
 
 			current.src = current.dataset.src;
+		}
+	}
+
+	function initLabels(container) {
+		if ( container.dataset.showLabels ) {
+			let beforeLabel	= container.dataset.beforeLabel? container.dataset.beforeLabel : 'Before';
+			let afterLabel	= container.dataset.afterLabel? container.dataset.afterLabel : 'After';
+
+			const before 	= document.createElement("P");
+			const beforeTxt	= document.createTextNode(beforeLabel);
+			const after		= document.createElement("P");
+			const afterTxt	= document.createTextNode(afterLabel);
+			before.appendChild(beforeTxt);
+			after.appendChild(afterTxt);
+			container.appendItem(before);
+			container.querySelector('.img-comp-img').before(after);
 		}
 	}
 
