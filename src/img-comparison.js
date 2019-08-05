@@ -19,12 +19,12 @@ function initComparisons() {
 			let current = images[i];
 
 			if ( i === images.length -1 ) {
-				current.onload = function(img) {
+				current.onload = function() {
 					compareImages(container);
 					initLabels(container);
 					setTimeout(() => {
-						img.style.height = y + 'px';
-						img.style.maxWidth = x + 'px';
+						this.style.height = y + 'px';
+						this.style.maxWidth = x + 'px';
 					}, 100);
 				};
 			} else {
@@ -43,14 +43,19 @@ function initComparisons() {
 			let beforeLabel	= container.dataset.beforeLabel? container.dataset.beforeLabel : 'Before';
 			let afterLabel	= container.dataset.afterLabel? container.dataset.afterLabel : 'After';
 
+			// Create && append before label
 			const before 	= document.createElement("P");
 			const beforeTxt	= document.createTextNode(beforeLabel);
+			before.appendChild(beforeTxt);
+			before.className += 'img-comp__label img-comp__label__before';
+			container.appendChild(before);
+
+			// Create && append after label
 			const after		= document.createElement("P");
 			const afterTxt	= document.createTextNode(afterLabel);
-			before.appendChild(beforeTxt);
 			after.appendChild(afterTxt);
-			container.appendItem(before);
-			container.querySelector('.img-comp-img').before(after);
+			after.className += 'img-comp__label img-comp__label__after';
+			container.appendChild(after);
 		}
 	}
 
