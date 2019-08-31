@@ -68,6 +68,14 @@ function initComparisons() {
 		let start = 50;
 		let uiVerticalPlacement = 50;
 
+		/* Set Horizontal Placement of slider UI */
+		if ( container.dataset.comparisonStart ) {
+			start = parseInt(container.dataset.comparisonStart); }
+
+		/* Set Vertical Placement of slider UI */
+		if ( container.dataset.uiVerticalPlacement) {
+			uiVerticalPlacement = parseInt(container.dataset.uiVerticalPlacement); }
+
 		container.style.height = img.offsetHeight + 'px';
 
 		/* Get the width and height of the img element */
@@ -83,15 +91,6 @@ function initComparisons() {
 
 		/* Insert slider */
 		img.parentElement.insertBefore(slider, img);
-
-
-		/* Set Horizontal Placement of slider UI */
-		if ( container.dataset.comparisonStart ) {
-			start = parseInt(container.dataset.comparisonStart); }
-
-		/* Set Vertical Placement of slider UI */
-		if ( container.dataset.uiVerticalPlacement) {
-			uiVerticalPlacement = parseInt(container.dataset.uiVerticalPlacement); }
 
 		/* Position the slider */
 		slider.style.top = (h * (uiVerticalPlacement / 100)) - (slider.offsetHeight / 2) + "px";
