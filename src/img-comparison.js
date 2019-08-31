@@ -66,10 +66,7 @@ function initComparisons() {
 		let h;
 		let img = container.querySelector('.img-comp-overlay');
 		let start = 50;
-
-		if ( container.dataset.comparisonStart ) {
-			start = parseInt(container.dataset.comparisonStart);
-		}
+		let uiVerticalPlacement = 50;
 
 		container.style.height = img.offsetHeight + 'px';
 
@@ -87,8 +84,17 @@ function initComparisons() {
 		/* Insert slider */
 		img.parentElement.insertBefore(slider, img);
 
-		/* Position the slider in the middle: */
-		slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+
+		/* Set Horizontal Placement of slider UI */
+		if ( container.dataset.comparisonStart ) {
+			start = parseInt(container.dataset.comparisonStart); }
+
+		/* Set Vertical Placement of slider UI */
+		if ( container.dataset.uiVerticalPlacement) {
+			uiVerticalPlacement = parseInt(container.dataset.uiVerticalPlacement); }
+
+		/* Position the slider */
+		slider.style.top = (h * (uiVerticalPlacement / 100)) - (slider.offsetHeight / 2) + "px";
 		slider.style.left = (w * (start / 100)) - (slider.offsetWidth / 2) + "px";
 
 		container.classList.add('state_active');
