@@ -65,6 +65,11 @@ function initComparisons() {
 		let w;
 		let h;
 		let img = container.querySelector('.img-comp-overlay');
+		let start = 50;
+
+		if ( container.dataset.comparisonStart ) {
+			start = parseInt(container.dataset.comparisonStart);
+		}
 
 		container.style.height = img.offsetHeight + 'px';
 
@@ -73,7 +78,7 @@ function initComparisons() {
 		h = img.offsetHeight;
 
 		/* Set the width of the img element to 50%: */
-		img.style.width = (w / 2) + "px";
+		img.style.width = (w * (start / 100)) + "px";
 
 		/* Create slider: */
 		slider = document.createElement("DIV");
@@ -84,7 +89,7 @@ function initComparisons() {
 
 		/* Position the slider in the middle: */
 		slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
-		slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+		slider.style.left = (w * (start / 100)) - (slider.offsetWidth / 2) + "px";
 
 		container.classList.add('state_active');
 		setTimeout(() => {
