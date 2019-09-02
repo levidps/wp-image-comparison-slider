@@ -135,7 +135,7 @@ function initComparisons() {
             	/* if `clicked` then calculate/move */
                 if(clicked){
                     var moveX = evt === 'touchmove' ? e.changedTouches[0].clientX : e.clientX;
-                    slide(moveX);
+                    slideMove(moveX);
                 }
             });
         });
@@ -152,30 +152,14 @@ function initComparisons() {
 			clicked = 0;
 		}
 
-		function slideMove(e) {
-			let pos;
+		function slideMove(pos) {
 			/* If the slider is no longer clicked, exit this function: */
 			if (clicked === 0) return false;
-			/* Get the cursor's x position: */
-			pos = getCursorPos(e);
 			/* Prevent the slider from being positioned outside the image: */
 			if (pos < 0) pos = 0;
 			if (pos > w) pos = w;
 			/* Execute a function that will resize the overlay image according to the cursor: */
 			slide(pos);
-		}
-
-		function getCursorPos(e) {
-			let a;
-			let x = 0;
-			e = e || window.event;
-			/* Get the x positions of the image: */
-			a = img.getBoundingClientRect();
-			/* Calculate the cursor's x coordinate, relative to the image: */
-			x = e.pageX - a.left;
-			/* Consider any page scrolling: */
-			x = x - window.pageXOffset;
-			return x;
 		}
 
 		function slide(x) {
