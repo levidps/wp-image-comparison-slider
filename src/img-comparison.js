@@ -101,33 +101,54 @@ function initComparisons() {
 			container.classList.remove('state_loading');
 		}, 1000);
 
-		/* Execute a function when the mouse button is pressed: */
-		slider.addEventListener("mousedown", slideReady);
 
-		/* And another function when the mouse button is released: */
-		window.addEventListener("mouseup", slideFinish);
+		/**
+		  * CREDITS:
+		  *
+		  * Event Listeners improved using before/after by @ArekPastuszka
+		  * https://github.com/ArekPastuszka/before-after
+		  *
+		  */
+		/* MouseDown/TouchStart listeners */
+        'mousedown touchstart'.split(' ').forEach(function(evt) {
+            slider.addEventListener(evt, function (e) {
+            	/* Stop default events from occuring */
+                e.preventDefault();
+                e.stopPropagation();
 
-		/* Or touched (for touch screens: */
-		slider.addEventListener("touchstart", slideReady);
+                /* Inita Clicking :) */
+                slideReady();
+            });
+        });
 
-		/* And released (for touch screens: */
-		window.addEventListener("touchstop", slideFinish);
+        /* MouseUp/TouchEnd listeners */
+        'mouseup touchend'.split(' ').forEach(function (evt) {
+            document.addEventListener(evt, function () {
+            	/* Stop slide functions */
+                slideFinish();
+            });
+        });
 
-		/* And Cancel Touch (to celear the touch screen issue) */
-		window.addEventListener("touchcancel", slideFinish, false);
+		/* MouseMove/TouchMove listeners */
+        'mousemove touchmove'.split(' ').forEach(function (evt) {
+            container.addEventListener(evt, function (e) {
+            	/* if `clicked` then calculate/move */
+                if(clicked){
+                    var moveX = evt === 'touchmove' ? e.changedTouches[0].clientX : e.clientX;
+                    slide(moveX);
+                }
+            });
+        })
 
 		function slideReady(e) {
-			/* Prevent any other actions that may occur when moving over the image: */
-			e.preventDefault();
 			/* The slider is now clicked and ready to move: */
+			container.classList.add('img-comp-container--dragging');
 			clicked = 1;
-			/* Execute a function when the slider is moved: */
-			window.addEventListener("mousemove", slideMove);
-			window.addEventListener("touchmove", slideMove);
 		}
 
 		function slideFinish() {
 			/* The slider is no longer clicked: */
+			container.classList.remove('img-comp-container--dragging');
 			clicked = 0;
 		}
 
