@@ -6,7 +6,7 @@ var gulp                = require('gulp'),
 	composer 		    = require('gulp-uglify/composer'),
 	eslint				= require('gulp-eslint'),
 	babel 				= require('gulp-babel'),
-	minifycss           = require('gulp-minify-css'),
+	minifycss           = require('gulp-clean-css'),
 	notify			    = require('gulp-notify'),
 	plumber			    = require('gulp-plumber'),
 	pump 			    = require('pump'),
@@ -34,7 +34,7 @@ gulp.task('sass', function(done) {
         sourcemaps.init(),
         sass(),
 		autoprefixer('last 2 version', 'safari 5', 'ie 7', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'),
-		gulpIf(isProd, minifycss()),
+		gulpIf(isProd, minifycss({compatibility: 'ie8'})),
 	    gulpIf(!isProd, sourcemaps.write('/_maps')),
 		gulp.dest(config.destination)
     ], done);
