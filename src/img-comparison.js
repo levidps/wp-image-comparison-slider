@@ -116,7 +116,7 @@ function initComparisons() {
                 e.preventDefault();
                 e.stopPropagation();
 
-                /* Inita Clicking :) */
+                /* Init Clicking :) */
                 slideReady();
             });
         });
@@ -135,6 +135,7 @@ function initComparisons() {
             	/* if `clicked` then calculate/move */
                 if(clicked){
                     var moveX = evt === 'touchmove' ? e.changedTouches[0].clientX : e.clientX;
+                    console.log(e);
                     slideMove(moveX);
                 }
             });
@@ -152,10 +153,11 @@ function initComparisons() {
 			clicked = 0;
 		}
 
-		function slideMove(pos) {
+		function slideMove(offsetX) {
 			/* If the slider is no longer clicked, exit this function: */
 			if (clicked === 0) return false;
 			/* Prevent the slider from being positioned outside the image: */
+	        var pos = offsetX - container.getBoundingClientRect().left;
 			if (pos < 0) pos = 0;
 			if (pos > w) pos = w;
 			/* Execute a function that will resize the overlay image according to the cursor: */
