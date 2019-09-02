@@ -36,7 +36,7 @@
 		transition: opacity .5s ease 1s;
 	}
 
-	&:hover {
+	&:hover, &.img-comp-container--dragging {
 		.img-comp-img.img-comp-overlay.draw--divider:after {
 			height: 100%;
 			top: 0%;

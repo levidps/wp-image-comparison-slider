@@ -138,7 +138,7 @@ function initComparisons() {
                     slide(moveX);
                 }
             });
-        })
+        });
 
 		function slideReady(e) {
 			/* The slider is now clicked and ready to move: */
