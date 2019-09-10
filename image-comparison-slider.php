@@ -36,14 +36,16 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 			// Attributes
 			$args = shortcode_atts(
 				array(
-					'image-one'     => '',
-					'image-one-alt' => '',
-					'image-two'     => '',
-					'image-two-alt' => '',
-					'caption'		=> null,
-					'max-width'     => '1280',
-					'max-height'    => '720',
-					'start'         => '50%'
+					'image-one'             => '',
+					'image-one-alt'         => '',
+					'image-two'             => '',
+					'image-two-alt'         => '',
+					'caption'		        => null,
+					'max-width'             => '1280',
+					'max-height'            => '720',
+					'start'                 => '50%',
+                    'ui-vertical-placement' => '50%',
+                    'xclass'                => ''
 				), $args
 			);
 			$output = null;
@@ -56,14 +58,17 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 
 			$caption= esc_attr($args['caption']);
 
+			$xclass = esc_attr($args['xclass']);
+
 			$start  = esc_attr($args['start']);
+			$uiVeticalPlacement = esc_attr($args['ui-vertical-placement']);
 			$width  = esc_attr($args['max-width']);
 			$height = esc_attr($args['max-height']);
 
 			// Validate URLs for images
 			if ( filter_var($img1, FILTER_VALIDATE_URL) && filter_var($img2, FILTER_VALIDATE_URL)):
 				$output =
-					'<div class="img-comp-container" data-comparison-start="'. $start .'" data-comparison-height="'. $height .'" data-comparison-width="'. $width .'">
+					'<div class="img-comp-container '. $xclass .'" data-comparison-start="'. $start .'" data-ui-vertical-placement="'. $uiVeticalPlacement .'" data-comparison-height="'. $height .'" data-comparison-width="'. $width .'">
 					  <div class="img-comp-img">
 					    <img class="img-comp-post" data-src="'. $img2 .'" alt="'. $alt1 .'">
 					  </div>
