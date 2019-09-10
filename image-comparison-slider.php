@@ -68,7 +68,7 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 			// Validate URLs for images
 			if ( filter_var($img1, FILTER_VALIDATE_URL) && filter_var($img2, FILTER_VALIDATE_URL)):
 				$output =
-					'<div class="img-comp-container '. $xclass .'" data-comparison-start="'. $start .'" data-ui-vertical-placement="'. $uiVeticalPlacement .'" data-comparison-height="'. $height .'" data-comparison-width="'. $width .'">
+					'<div class="img-comp-container" data-comparison-start="'. $start .'" data-ui-vertical-placement="'. $uiVeticalPlacement .'" data-comparison-height="'. $height .'" data-comparison-width="'. $width .'">
 					  <div class="img-comp-img">
 					    <img class="img-comp-post" data-src="'. $img2 .'" alt="'. $alt1 .'">
 					  </div>
@@ -81,7 +81,7 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 						$output .= '<figcaption>'. $caption .'</figcaption>';
 					endif;
 
-					$output = '<figure>'. $output .'</figure>';
+					$output = '<figure class="'. $xclass .'">'. $output .'</figure>';
 			endif;
 
 			return $output;
