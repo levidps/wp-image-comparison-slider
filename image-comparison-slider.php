@@ -41,6 +41,7 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 					'image-two'             => '',
 					'image-two-alt'         => '',
 					'caption'		        => null,
+					'show-labels'           => true,
 					'max-width'             => '1280',
 					'max-height'            => '720',
 					'start'                 => '50%',
@@ -58,6 +59,7 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 
 			$caption= esc_attr($args['caption']);
 
+			$hasLabels = esc_attr($args['show-labels']);
 			$xclass = esc_attr($args['xclass']);
 
 			$start  = esc_attr($args['start']);
@@ -68,7 +70,7 @@ if ( ! function_exists( 'init_comparison_slider' ) ) :
 			// Validate URLs for images
 			if ( filter_var($img1, FILTER_VALIDATE_URL) && filter_var($img2, FILTER_VALIDATE_URL)):
 				$output =
-					'<div class="img-comp-container '. $xclass .'" data-comparison-start="'. $start .'" data-ui-vertical-placement="'. $uiVeticalPlacement .'" data-comparison-height="'. $height .'" data-comparison-width="'. $width .'">
+					'<div class="img-comp-container '. $xclass .'" data-comparison-start="'. $start .'" data-ui-vertical-placement="'. $uiVeticalPlacement .'" data-show-labels="'. $hasLabels .'" data-comparison-height="'. $height .'" data-comparison-width="'. $width .'">
 					  <div class="img-comp-img">
 					    <img class="img-comp-post" data-src="'. $img2 .'" alt="'. $alt1 .'">
 					  </div>
